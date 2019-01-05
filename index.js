@@ -32,16 +32,16 @@ promiseFn('John').then(console.log)
 promiseFn().catch(console.log)
 
 // async/await
-// (async () => {
-//   try {
-//     console.log(await promiseFn('Jane')) 
-//   } catch (e) {
-//     console.log(e)
-//   }
+const result = (async () => {
+  try {
+    console.log(await promiseFn('Jane')) 
+  } catch (e) {
+    console.log(e)
+  }
 
-//   try {
-//     console.log(await promiseFn()) 
-//   } catch (e) {
-//     console.log(e)
-//   }
-// })()
+  try {
+    console.log(await promiseFn()) 
+  } catch (e) {
+    console.log(e)
+  }
+})()
