@@ -1,14 +1,11 @@
 // callback
 const callbackFn = (firstName, callback) => {
   setTimeout(() => {
-    if (!firstName) {
-      callback('no first name passed in!')
-      return
-    }
+    if (!firstName) return callback('no first name passed in')
     
     const fullName = `${firstName} Doe`
     
-    callback(fullName)
+    return callback(fullName)
   }, 2000)
 }
 
