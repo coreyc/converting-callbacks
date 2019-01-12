@@ -20,7 +20,7 @@ const promiseFn = firstName => {
       
       const fullName = `${firstName} Doe`  
       
-      if (fullName) resolve(fullName)
+      resolve(fullName)
     }, 2000)
   })
 }
@@ -49,13 +49,13 @@ const timeout = ms => {
 
 // converting callback -> async/await
 const asyncAwaitFn = async firstName => {
-  await timeout(2000) // easier to demonstrate this way rather than using setTimeout directly
+  await timeout(2000)
   
   if (!firstName) throw new Error('no first name passed in!')
     
   const fullName = `${firstName} Doe`
     
-  if (fullName) return fullName
+  return fullName
 }
 
 const res = (async () => {
