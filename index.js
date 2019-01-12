@@ -1,7 +1,7 @@
 // callback
 const callbackFn = (firstName, callback) => {
   setTimeout(() => {
-    if (!firstName) return callback('no first name passed in')
+    if (!firstName) return callback(new Error('no first name passed in!'))
     
     const fullName = `${firstName} Doe`
     
@@ -9,14 +9,14 @@ const callbackFn = (firstName, callback) => {
   }, 2000)
 }
 
-callbackFn('John', console.log)
+callbackFn('Callback', console.log)
 callbackFn(null, console.log)
 
-// promise
+// converting callback -> promise
 const promiseFn = firstName => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (!firstName) reject('no first name passed in!')
+      if (!firstName) reject(new Error('no first name passed in!'))
       
       const fullName = `${firstName} Doe`  
       
@@ -25,19 +25,48 @@ const promiseFn = firstName => {
   })
 }
 
-promiseFn('John').then(console.log)
+promiseFn('Promise').then(console.log)
 promiseFn().catch(console.log)
 
-// async/await
+// calling promise using async/await
 const result = (async () => {
   try {
-    console.log(await promiseFn('Jane')) 
+    console.log(await promiseFn('Async')) 
   } catch (e) {
     console.log(e)
   }
 
   try {
     console.log(await promiseFn()) 
+  } catch (e) {
+    console.log(e)
+  }
+})()
+
+const timeout = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+// converting callback -> async/await
+const asyncAwaitFn = async firstName => {
+  await timeout(2000) // easier to demonstrate this way rather than using setTimeout directly
+  
+  if (!firstName) throw new Error('no first name passed in!')
+    
+  const fullName = `${firstName} Doe`
+    
+  if (fullName) return fullName
+}
+
+const res = (async () => {
+  try {
+    console.log(await asyncAwaitFn('Async-converted')) 
+  } catch (e) {
+    console.log(e)
+  }
+
+  try {
+    console.log(await asyncAwaitFn()) 
   } catch (e) {
     console.log(e)
   }
