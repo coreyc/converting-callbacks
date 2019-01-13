@@ -9,7 +9,7 @@ const callbackFn = (firstName, callback) => {
   }, 2000)
 }
 
-callbackFn('Callback', console.log)
+callbackFn('John', console.log)
 callbackFn(null, console.log)
 
 // converting callback -> promise
@@ -25,13 +25,13 @@ const promiseFn = firstName => {
   })
 }
 
-promiseFn('Promise').then(console.log)
+promiseFn('Jane').then(console.log)
 promiseFn().catch(console.log)
 
 // calling promise using async/await
 const result = (async () => {
   try {
-    console.log(await promiseFn('Async')) 
+    console.log(await promiseFn('Jim')) 
   } catch (e) {
     console.log(e)
   }
@@ -60,7 +60,7 @@ const asyncAwaitFn = async firstName => {
 
 const res = (async () => {
   try {
-    console.log(await asyncAwaitFn('Async-converted')) 
+    console.log(await asyncAwaitFn('Jack')) 
   } catch (e) {
     console.log(e)
   }
