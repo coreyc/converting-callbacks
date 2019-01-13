@@ -49,7 +49,7 @@ const timeout = ms => {
 
 // converting callback -> async/await
 const asyncAwaitFn = async firstName => {
-  await timeout(2000)
+  await timeout(2000) // using timeout like this makes it easier to demonstrate callback -> async/await conversion
   
   if (!firstName) throw new Error('no first name passed in!')
     
